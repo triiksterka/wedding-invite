@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Приглашение — Роман &amp; Светлана</title>
+
+<!-- ─── шрифты ─── -->
+<style>
+@font-face{font-family:"Actinia";src:url("fonts/Actinia-Regular.woff2") format("woff2"),url("fonts/Actinia-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"GoodVibesPro";src:url("fonts/GoodVibesPro-Regular.woff2") format("woff2"),url("fonts/GoodVibesPro-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Naga";src:url("fonts/Naga.woff2") format("woff2"),url("fonts/Naga.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+</style>
+
+<!-- ─── БАЗОВЫЕ СТИЛИ ─── -->
+<style>
+:root{--inner-w:960px;--accent:#000}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  font-family:"Actinia",serif;font-size:18px;line-height:1.4;
+  color:var(--accent);background:#fff;overflow-x:hidden;
+  overscroll-behavior-x:contain;touch-action:pan-y pinch-zoom;
+}
+.inner{max-width:var(--inner-w);width:100%;margin:0 auto;padding:0 40px}
+
+/* ─── Header ─── */
+header{position:fixed;inset:0 0 auto 0;height:80px;background:#fff;z-index:100;display:flex;justify-content:center}
+.header-inner{width:100%;height:100%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5}
+.date{
+  font-family:"GoodVibesPro","Great Vibes",cursive;
+  font-weight:600;
+  letter-spacing:1px;
+  font-size:32px}
+.sound-btn{background:none;border:none;font-size:26px;cursor:pointer;color:var(--accent);transition:transform .2s}
+.sound-btn:hover{transform:scale(1.1)}
+
+/* жемчужная нить (декор) */
+.pearls{position:absolute;top:80px;left:32%;width:400px;transform:translate(-50%,-45%) rotate(-8deg);filter:brightness(1.65) contrast(1.1);pointer-events:none;user-select:none;z-index:50}
+
+/* ─── Блок 1 — коллаж ─── */
+main{margin-top:120px;display:flex;justify-content:center;position:relative}
+.title{position:relative;font-family:"Naga";font-size:32px;letter-spacing:2px;font-weight:600;text-transform:uppercase;margin-bottom:60px;text-align:center}
+.subtitle-img{position:absolute;top:90%;left:50%;width:240px;transform:translate(-50%,-40%) rotate(-6deg);pointer-events:none}
+
+@keyframes floatGroup{0%{transform:translateX(-32px)}50%{transform:translateX(32px)}100%{transform:translateX(-32px)}}
+@keyframes floatGroupMobile{0%{transform:translateX(-80px)}50%{transform:translateX(80px)}100%{transform:translateX(-80px)}}
+
+.photos-wrapper{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:visible}
+.photos{display:flex;gap:16px;justify-content:center;align-items:center;margin:20px 0 40px;animation:floatGroup 8s ease-in-out infinite}
+.photos img{width:180px;height:252px;object-fit:cover;border-radius:18px;flex-shrink:0}
+.photos img:nth-child(2){width:220px;height:294px;z-index:1}
+
+.names{font-family:"GoodVibesPro","Great Vibes",cursive;font-size:64px;line-height:1.2;text-align:center;font-weight:400}
+
+/* ─── Блок 2 — приветствие ─── */
+.greeting{position:relative;padding:40px 0 40px;overflow:hidden;text-align:center}
+.greeting-title{font-family:"GoodVibesPro","Great Vibes",cursive;font-size:54px;font-weight:400;margin-bottom:32px}
+.greeting-text{max-width:600px;margin:0 auto;font-size:20px;line-height:1.6;font-family:"Naga","Actinia",serif}
+.pearls-side{position:absolute;top:-120px;width:500px;filter:brightness(1.75) contrast(1.1);pointer-events:none}
+.pearls-side.left{left:-260px;transform:rotate(-12deg)}
+.pearls-side.right{right:-260px;transform:rotate(12deg)}
+
+/* ─── Блок 3 — дата + таймер ─── */
+.when{position:relative;padding:40px 0 10px;text-align:center}
+.when-title,.month-title{font-family:"GoodVibesPro","Great Vibes",cursive;font-weight:400}
+.when-title{font-size:54px;margin-bottom:32px}
+.month-title{font-size:44px;margin-bottom:16px}
+.calendar-img{width:260px;max-width:80%;margin:0 auto 40px;display:block}
+.countdown{display:flex;justify-content:center;gap:32px;font-size:24px;font-weight:100;letter-spacing:1px;font-family:"Naga","Actinia",serif}
+.countdown-item{text-align:center}
+.countdown-value{display:block;font-size:36px;font-weight:100}
+
+/* ─── Блок 4 — место проведения ─── */
+.venue{position:relative;padding:40px 0 10px;text-align:center}
+.venue-title{font-family:"GoodVibesPro","Great Vibes",cursive;font-size:54px;font-weight:400;margin-bottom:32px}
+.venue-text{max-width:600px;margin:0 auto;font-size:20px;line-height:1.6;font-family:"Naga","Actinia",serif}
+.map-box{width:260px;height:260px;max-width:80%;margin:24px auto;border-radius:12px;overflow:hidden}
+.finish-line{width:140px;height:1px;background:#ccc;border-radius:1px;margin:56px auto 0}
+
+/* ─── блок 5 ─── */
+/* ─── блок 5 ─── */
+.timeline{position:relative;padding:40px 0 10px}
+.timeline-title{
+  font-family:"GoodVibesPro","Great Vibes",cursive;
+  font-size:54px;font-weight:400;text-align:center;margin-bottom:32px;
+}
+
+/* Список: растягиваем на всю ширину, но ограничиваем max-width */
+.timeline-list{
+  list-style:none;position:relative;margin:0 auto;padding:0;
+  width:100%;                /* ← было 420px, поэтому линия съезжала */
+  max-width:900px;           /* подберите под макет/контейнер */
+}
+
+/* Центральная линия */
+.timeline-list::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;
+  width:2px;background:#888;transform:translateX(-50%);
+}
+
+/* ─── элемент ─── */
+.timeline-list li{
+  position:relative;         /* точка, иконка и текст «цепляются» к li */
+  padding:48px 0;            /* высота отступа между событиями */
+}
+
+/* Точка на линии */
+.tl-dot{
+  position:absolute;left:50%;top:50%;
+  width:14px;height:14px;border-radius:50%;background:#444;
+  transform:translate(-50%,-50%);
+}
+
+/* Иконка слева от линии */
+.tl-icon{
+  position:absolute;
+  right:50%;                 /* «цепляемся» к центру */
+  top:50%;
+  width:90px;height:90px;object-fit:contain;
+  transform:translate(calc(60px - 100%), -50%);
+  /* -100% — сдвигаем на собственную ширину, -32px — отступ от линии */
+}
+
+/* Текст справа от линии */
+.tl-text{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(32px,-50%);   /* 32px — тот же отступ, но вправо  */
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left;
+}
+
+.tl-time{font-size:20px;font-weight:600;font-family:"Naga","Actinia",serif}
+.tl-desc{font-size:18px;font-family:"Naga","Actinia",serif;margin-top:4px}
+
+/* ─── блок 6 — пожелания ─── */
+.wishes{position:relative;padding:40px 0 10px;text-align:center}
+.wishes-title{
+  font-family:"GoodVibesPro","Great Vibes",cursive;
+  font-size:54px;font-weight:400;margin-bottom:32px;
+}
+
+/* сердечко-разделитель */
+.wish-heart{width:36px;height:36px;margin:32px auto}
+
+/* основной текст пожеланий */
+.wish-text{
+  max-width:600px;margin:0 auto;
+  font:400 20px/1.6 "Naga","Actinia",serif;
+}
+
+/* палитра цветов */
+.palette{display:flex;justify-content:center;gap:24px;margin:32px 0}
+.palette li{
+  list-style:none;
+  width:70px;height:70px;border:1px solid #444;border-radius:50%;
+}
+
+/* подпись под палитрой */
+.palette-note{
+  font-family:"GoodVibesPro","Great Vibes",cursive;
+  font-size:30px;font-weight:100;
+  margin-top:8px;
+}
+
+/* ─── блок 7 — анкета гостя ─── */
+.rsvp{
+  position:relative;
+  padding:40px 0 120px;          /* вертикальные отступы */
+  text-align:center;
+}
+
+/* одинаковые боковые поля 40 px */
+.rsvp .inner{padding:0 40px}
+
+/* ── заголовок ── */
+.rsvp-title{
+  font-family:"GoodVibesPro","Great Vibes",cursive;
+  font-size:54px;
+  font-weight:400;
+  margin-bottom:32px;
+}
+
+/* вводный абзац */
+.rsvp-text{
+  max-width:600px;
+  margin:0 auto 32px;
+  font:400 20px/1.6 "Naga","Actinia",serif;
+}
+
+/* ── форма ── */
+.rsvp-form{max-width:600px;margin:0 auto;text-align:left}
+.form-group{margin:28px 0}
+
+.form-group label{
+  display:block;
+  font:600 18px/1.4 "Naga","Actinia",serif;
+  margin-bottom:8px;
+}
+
+.rsvp-input{
+  width:100%;
+  padding:12px 16px;
+  font:400 18px "Naga","Actinia",serif;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+/* список вариантов */
+.choice-list{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.choice-list label{font:400 18px "Naga","Actinia",serif}
+
+/* увеличиваем радиокнопки и чекбоксы */
+.rsvp .choice-list input[type=radio],
+.rsvp .choice-list input[type=checkbox]{
+  transform:scale(1.4);   /* коэффициент масштабирования */
+  margin-right:8px;
+  cursor:pointer;
+}
+
+/* ── кнопка ── */
+.rsvp-submit{
+  display:inline-block;
+  margin:40px auto 0;
+  padding:12px 40px;
+  font:400 24px "GoodVibesPro","Great Vibes",cursive;
+  color:#fff;background:#000;
+  border:none;border-radius:28px;
+  cursor:pointer;transition:opacity .2s;
+}
+.rsvp-submit:hover{opacity:.8}
+
+/* ─── подвал сайта ─── */
+.footer{
+  background:#fafafa;
+  padding:60px 0;
+  text-align:center;
+  border-top:1px solid #e5e5e5;
+}
+
+.footer .inner{padding:0 40px}          /* те же 40 px по краям */
+
+.footer-title{
+  font-family:"GoodVibesPro","Great Vibes",cursive;
+  font-size:46px;
+  font-weight:400;
+  margin-bottom:32px;
+}
+
+.contact-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  max-width:480px;
+  margin:0 auto;
+  font:400 20px/1.5 "Naga","Actinia",serif;
+}
+
+.contact-list span{
+  font-weight:600;                     /* «Жених:», «Невеста:» чуть ярче */
+}
+
+
+/* «жемчужная» разделительная линия */
+.finish-line{
+  width:180px; height:10px;
+  margin:56px auto 0;
+  background:radial-gradient(circle at 50% 50%, #fff 0 25%, #d8d8d8 26% 40%, transparent 41%) repeat-x;
+  background-size:10px 10px;
+  opacity:.6;
+}
+
+/* подчёркиваем ссылки-телефоны */
+a[href^="tel:"]{
+  position:relative;
+  text-decoration:none;
+  border-bottom:1px dotted currentColor;
+}
+a[href^="tel:"]:hover{opacity:.7}
+
+/* подчёркиваем кнопку формы небольшим shadow */
+.rsvp-submit{box-shadow:0 4px 8px rgba(0,0,0,.15)}
+.rsvp-submit:active{transform:translateY(1px)}
+
+/* убираем «лишнюю» серую finish-line в mobile → меньше пустоты */
+@media(max-width:768px){
+  .finish-line{margin-top:32px}
+}
+
+/* когда музыка ИДЁТ (кнопка получила класс .playing) — прячем перечёркнутый динамик */
+#soundToggle.playing  [data-sound="off"] { display: none; }
+
+/* когда музыка НЕ играет (кнопка без класса .playing) — прячем громкий динамик */
+#soundToggle:not(.playing) [data-sound="on"] { display: none; }
+
+/* ─── rsvp-link (кнопка) ─── */
+.rsvp-link{
+  display:inline-block;
+  margin-top:40px;
+  padding:14px 56px;
+  font:400 32px "GoodVibesPro","Great Vibes",cursive;
+  color:#fff;
+  background:#000;
+  border-radius:32px;
+  text-decoration:none;
+  transition:.25s;
+}
+.rsvp-link:hover{background:#333;transform:translateY(-2px)}
+.rsvp-link:active{transform:translateY(0)}
+
+
+/* ─── мобильная адаптация ─── */
+@media(max-width:768px){
+  .inner{padding:0 40px}
+  header{height:70px}
+  .date{font-size:22px}.sound-btn{font-size:22px}
+  .pearls{top:70px;left:38%;width:260px;transform:translate(-50%,-50%) rotate(-8deg)}
+  .title{font-size:26px;margin-bottom:40px}
+  .subtitle-img{width:200px;top:95%;transform:translate(-50%,-45%) rotate(-6deg)}
+  .photos-wrapper{width:100%;margin-left:0;transform:none}
+  .photos{gap:16px;padding:0 8 vw;animation:floatGroupMobile 8s ease-in-out infinite}
+  .photos img{width:38vw;height:54vw}.photos img:nth-child(2){width:44vw;height:62vw}
+  .names{font-size:46px}
+
+  /* расширенные боковые поля со 2-го блока и ниже */
+  /*.greeting .inner,
+  .when    .inner,
+  .venue   .inner,
+  .wishes  .inner{padding:0 40px} */
+
+  .greeting{padding:16px 0 20px}.greeting-title{font-size:40px;margin-bottom:32px}.greeting-text{font-size:18px}
+  .pearls-side{width:360px;top:-100px}.pearls-side.left{left:-220px}.pearls-side.right{right:-220px}
+
+  .when{padding:32px 0 20px}
+  .when-title{font-size:40px;margin-bottom:24px}.month-title{font-size:34px;margin-bottom:12px}
+  .calendar-img{width:220px;margin-bottom:32px}
+  .countdown{gap:16px;font-size:18px}.countdown-value{font-size:28px}
+
+  .venue-title{font-size:40px;margin-bottom:24px}
+  .venue-text{font-size:18px}
+  .map-box{width:220px;height:220px;margin:20px auto}
+  .finish-line{margin-top:40px}
+
+  .timeline{padding:32px 0 10px}
+  .timeline-title{font-size:40px;margin-bottom:24px}
+  .timeline-list{max-width:100%}
+  .timeline-list li{padding:40px 0}
+  .tl-icon{
+    width:60px;height:60px;
+    transform:translate(calc(-60%), -50%);
+  }
+  .tl-dot{width:10px;height:10px}
+  .tl-time{font-size:18px}
+  .tl-desc{font-size:16px}
+
+  .wishes{padding:32px 0 20px}
+  .wishes-title{font-size:40px;margin-bottom:24px}
+  .wish-heart{width:28px;height:28px;margin:24px auto}
+  .wish-text{font-size:18px}
+  .palette{gap:16px}
+  .palette li{width:48px;height:48px}
+  .palette-note{font-size:24px}
+
+  .rsvp{padding:32px 0 100px}
+  .rsvp-title{font-size:40px;margin-bottom:24px}
+  .rsvp-text{font-size:18px;margin-bottom:24px}
+  .form-group label{font-size:16px}
+  .rsvp-input{font-size:16px}
+  .choice-list label{font-size:16px}
+  .rsvp-submit{
+    font-size:24px;
+    padding:10px 32px;
+  }
+
+  .footer{padding:48px 0}
+  .footer-title{font-size:36px;margin-bottom:24px}
+  .contact-list{font-size:18px;gap:20px}
+
+  .rsvp-link{
+    font-size:32px;
+    padding:12px 40px;
+  }
+
+</style>
+</head>
+
+<body>
+<!-- ─── header ─── -->
+<header>
+  <div class="inner header-inner">
+    <div class="date">06/09/25</div>
+<button id="soundToggle" class="sound-btn" aria-label="Переключить музыку">
+  <i class="fa-solid fa-volume-high"  data-sound="on"></i>
+  <i class="fa-solid fa-volume-xmark" data-sound="off"></i>
+</button>
+
+
+  </div>
+</header>
+
+<!-- жемчужный декор -->
+<img src="img/pearls.webp" alt="" class="pearls">
+
+<!-- ─── Блок 1 ─── -->
+<main>
+  <div class="inner">
+    <h1 class="title">Приглашение
+      <img src="img/na-svadbu.webp" alt="на свадьбу" class="subtitle-img">
+    </h1>
+
+    <div class="photos-wrapper">
+      <section class="photos">
+        <img src="img/photo1.jpg" alt="">
+        <img src="img/photo2.jpg" alt="">
+        <img src="img/photo3.jpg" alt="">
+      </section>
+    </div>
+
+    <div class="names">Роман и&nbsp;Светлана<br><br></div>
+  </div>
+</main>
+
+<!-- ─── Блок 2 ─── -->
+<section class="greeting">
+  <div class="inner">
+    <h2 class="greeting-title">Дорогие и&nbsp;любимые!</h2>
+    <p class="greeting-text">
+      В нашей жизни произойдёт очень<br> важное событие — наша свадьба!<br>
+      Позвольте пригласить вас разделить с нами<br>радость этого дня.
+    </p>
+  </div>
+</section>
+
+<div class="finish-line"></div>
+
+<!-- ─── Блок 3 ─── -->
+<section class="when">
+  <div class="inner">
+    <h2 class="when-title">Дата&nbsp;проведения<br><strong>06/09/25</strong></h2>
+
+    <div class="month-title">Сентябрь</div>
+    <img src="img/calendar.png" alt="Календарь Сентябрь 2025" class="calendar-img">
+
+    <h2 class="when-title">Ждем Вас через...</h2>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-item"><span id="cd-days"  class="countdown-value">00</span>дней</div>
+      <div class="countdown-item"><span id="cd-hours" class="countdown-value">00</span>часов</div>
+      <div class="countdown-item"><span id="cd-mins"  class="countdown-value">00</span>минут</div>
+      <div class="countdown-item"><span id="cd-secs"  class="countdown-value">00</span>секунд</div>
+    </div>
+  </div>
+</section>
+
+<div class="finish-line"></div>
+
+<!-- ─── Блок 4 ── место проведения ─── -->
+<section class="venue">
+  <div class="inner">
+    <h2 class="venue-title">Место&nbsp;проведения</h2>
+
+    <p class="venue-text">
+      Регистрация нашего брака состоится в 12:40<br>
+      в Сергиево-Посадском ЗАГСе<br>
+      Адрес: г.&nbsp;Сергиев Посад, просп.&nbsp;Красной&nbsp;Армии, 188
+    </p>
+    <div id="map-registry" class="map-box"></div>
+
+    <p class="venue-text" style="margin-top:48px">
+      Наш праздник начнётся в 15:30<br>
+      в ресторане «Келарская набережная»<br>
+      Адрес: г.&nbsp;Сергиев Посад, просп.&nbsp;Красной&nbsp;Армии, 125<br>
+      (зал-ресторан над лестницей)
+    </p>
+    <div id="map-banquet" class="map-box"></div>
+  </div>
+</section>
+
+<div class="finish-line"></div>
+
+<!-- ─── Блок 5 — план дня ─── -->
+<section class="timeline">
+  <div class="inner">
+
+    <h2 class="timeline-title">План&nbsp;дня</h2>
+
+    <ul class="timeline-list">
+      <!-- item 1 -->
+      <li>
+        <img src="img/icon-rings.webp" alt="" class="tl-icon">
+        <span class="tl-dot"></span>
+        <div class="tl-text">
+          <span class="tl-time">12:40</span>
+          <span class="tl-desc">Регистрация&nbsp;<br>в ЗАГСе</span>
+        </div>
+      </li>
+
+      <!-- item 2 -->
+      <li>
+        <img src="img/icon-banquet.webp" alt="" class="tl-icon">
+        <span class="tl-dot"></span>
+        <div class="tl-text">
+          <span class="tl-time">15:30</span>
+          <span class="tl-desc">Начало<br>банкета</span>
+        </div>
+      </li>
+
+      <!-- item 3 -->
+      <li>
+        <img src="img/icon-cake.webp" alt="" class="tl-icon">
+        <span class="tl-dot"></span>
+        <div class="tl-text">
+          <span class="tl-time">20:30</span>
+          <span class="tl-desc">Торт</span>
+        </div>
+      </li>
+
+      <!-- item 4 -->
+      <li>
+        <img src="img/icon-moon.webp" alt="" class="tl-icon">
+        <span class="tl-dot"></span>
+        <div class="tl-text">
+          <span class="tl-time">23:00</span>
+          <span class="tl-desc">Завершение<br>вечера</span>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<div class="finish-line"></div>
+
+<!-- ─── Блок 6 — пожелания ─── -->
+<section class="wishes">
+  <div class="inner">
+
+    <h2 class="wishes-title">Пожелания</h2>
+
+    <!-- 1-е пожелание -->
+    <img src="img/heart2.webp" alt="" class="wish-heart">
+    <p class="wish-text">
+      Дорогие гости, приносите с собой веселье и радость в душе, а подарки – <strong>в конвертах!</strong>
+    </p>
+
+    <!-- 2-е пожелание -->
+    <img src="img/heart2.webp" alt="" class="wish-heart">
+    <p class="wish-text">
+      Просим Вас не дарить нам цветы – будем признательны за альтернативу букетам
+      в форме чая или кофе.
+    </p>
+
+    <!-- 3-е пожелание + палитра -->
+    <img src="img/heart2.webp" alt="" class="wish-heart">
+    <p class="wish-text">
+      <strong>Самое главное для нас – Ваше присутствие!</strong><br>
+      Но нам будет очень приятно, если Вы поддержите стилистику нашей свадьбы
+      и выберете цвета из этой палитры:
+    </p>
+
+    <!-- палитра кругов -->
+    <ul class="palette">
+      <li style="background:#FEE9F0"></li>
+      <li style="background:#D6EEDE"></li>
+      <li style="background:#E7D4C3"></li>
+      <li style="background:#C5DAEF"></li>
+      <li style="background:#C1C5CE"></li>
+    </ul>
+    <p class="palette-note">Но не расстроимся, если что-то пойдёт не так!</p>
+
+
+  </div>
+</section>
+
+<!-- разделительная линия -->
+<div class="finish-line"></div>
+
+<!-- Анкета гостя -->
+<section class="rsvp">
+  <div class="inner">
+    <h2 class="rsvp-title">Анкета&nbsp;гостя</h2>
+    <p class="rsvp-text">
+      Чтобы мы могли сделать праздник ещё лучше, ответьте, пожалуйста,<br>
+      на несколько вопросов <strong>до&nbsp;01.08.2025</strong>.
+    </p>
+
+    <form class="rsvp-form" action="https://formspree.io/f/myzjqwev" method="POST" autocomplete="off">
+      <!-- 1. ФИО -->
+      <div class="form-group">
+        <label for="name">Ваше ФИО</label>
+        <input type="text" id="name" name="ФИО" required class="rsvp-input">
+      </div>
+      <!-- 2. Телефон -->
+      <div class="form-group">
+        <label for="phone">Ваш номер телефона</label>
+        <input type="tel" id="phone" name="Телефон" required class="rsvp-input" pattern="[\d\+\-\s\(\)]{10,}">
+      </div>
+      <!-- 3. Присутствие -->
+      <div class="form-group">
+        <label>Сможете ли присутствовать на нашем торжестве?</label>
+        <div class="choice-list">
+          <label><input type="radio" name="Присутствие" value="Обязательно приду" required> Обязательно приду</label>
+          <label><input type="radio" name="Присутствие" value="Буду со своей парой"> Буду со своей парой</label>
+          <label><input type="radio" name="Присутствие" value="К сожалению, не смогу присутствовать"> К сожалению, не смогу присутствовать</label>
+          <label><input type="radio" name="Присутствие" value="Сообщу позже"> Сообщу позже</label>
+        </div>
+      </div>
+      <!-- 4. Этап торжества -->
+      <div class="form-group">
+        <label>На каком этапе торжества Вы планируете присоединиться?</label>
+        <div class="choice-list">
+          <label><input type="radio" name="Этап" value="Приду на регистрацию в ЗАГСе" required> Приду на регистрацию в ЗАГСе (к 12:40)</label>
+          <label><input type="radio" name="Этап" value="Успею только к банкету"> Успею подойти только к началу банкета (к 15:00)</label>
+        </div>
+      </div>
+      <!-- 5. Напитки -->
+      <div class="form-group">
+        <label>Что предпочитаете из напитков?</label>
+        <div class="choice-list">
+          <label><input type="checkbox" name="Напитки" value="Красное вино"> Красное вино</label>
+          <label><input type="checkbox" name="Напитки" value="Белое вино"> Белое вино</label>
+          <label><input type="checkbox" name="Напитки" value="Шампанское"> Шампанское</label>
+          <label><input type="checkbox" name="Напитки" value="Водка"> Водка</label>
+          <label><input type="checkbox" name="Напитки" value="Виски"> Виски</label>
+          <label><input type="checkbox" name="Напитки" value="Коньяк"> Коньяк</label>
+          <label><input type="checkbox" name="Напитки" value="Безалкогольные напитки"> Безалкогольные напитки</label>
+        </div>
+      </div>
+      <!-- 6. Комментарий -->
+      <div class="form-group">
+        <label for="comment">Ваш комментарий<br>
+          <span style="font-size:15px;font-style:italic;display:block;font-weight:400;margin-top:2px;">
+            Если у вас есть определенные пожелания, дополнительная информация или вопросы, можете написать здесь
+          </span>
+        </label>
+        <textarea id="comment" name="Комментарий" rows="3" class="rsvp-input"></textarea>
+      </div>
+      <button type="submit" class="rsvp-submit">Отправить анкету</button>
+    </form>
+    <div id="form-success" style="display:none; text-align:center; margin-top:24px; font-size:20px; color:#226622">
+      Спасибо! Ваш ответ получен.
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── Блок 7 — анкета гостя ─── 
+<section class="rsvp">
+  <div class="inner">
+
+    <!----- заголовок ---
+    <h2 class="rsvp-title">Анкета&nbsp;гостя</h2>
+
+    <!----- вводный текст ---
+    <p class="rsvp-text">
+      Чтобы мы могли сделать праздник ещё лучше, ответьте, пожалуйста,
+      на несколько вопросов по кнопке ниже <strong>до&nbsp;01.08.2025</strong>.
+    </p>
+
+    <!----- кнопка-ссылка на Google-форму ---
+    <a  href="https://docs.google.com/forms/d/e/1FAIpQLSeEKAewEAGh9NMf3y-HdXNgK2Jebcgy0_sI-wZFBvi10QkU8Q/viewform"
+        target="_blank"
+        rel="noopener"
+        class="rsvp-link">
+        Заполнить анкету
+    </a>
+
+  </div>
+</section>-->
+
+
+
+<!-- ─── Подвал — контакты ─── -->
+<footer class="footer">
+  <div class="inner">
+
+    <h2 class="footer-title">Контакты</h2>
+
+    <!-- замените блок ul/li в footer -->
+    <ul class="contact-list">
+      <li><span>Жених:</span>   <a href="tel:+79962495787">+7&nbsp;996&nbsp;249-57-87</a></li>
+      <li><span>Невеста:</span> <a href="tel:+79253226118">+7&nbsp;925&nbsp;322-61-18</a></li>
+    </ul>
+
+
+  </div>
+</footer>
+
+
+
+<!-- ─── музыка ─── -->
+<audio id="bgMusic" src="audio/music.mp3" loop autoplay></audio>
+
+<!-- ─── внешние скрипты ─── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+<!-- ─── пользовательский JS ─── -->
+<script>
+const btn   = document.getElementById('soundToggle');
+const audio = document.getElementById('bgMusic');
+
+function syncBtn() {
+  btn.classList.toggle('playing', !audio.paused);
+}
+
+audio.addEventListener('play',  syncBtn);
+audio.addEventListener('pause', syncBtn);
+
+window.addEventListener('DOMContentLoaded', () => {
+  audio.play().catch(() => {});   // попытка автозапуска
+});
+
+btn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play().catch(() => {});
+  } else {
+    audio.pause();
+  }
+});
+
+
+/* таймер */
+const targetDate=new Date('2025-09-06T09:40:00Z');
+function updateCountdown(){
+  const now=new Date(),diff=Math.max(0,targetDate-now);
+  const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,1000);
+
+/* карты */
+ymaps.ready(()=>{
+  const heartIcon={
+    iconLayout:'default#image',
+    iconImageHref:'img/heart.svg',/* 32×32px SVG сердца */
+    iconImageSize:[32,32],
+    iconImageOffset:[-16,-32]
+  };
+
+  const regMap=new ymaps.Map('map-registry',{center:[56.317789,38.139279],zoom:16,controls:['zoomControl']});
+  regMap.geoObjects.add(new ymaps.Placemark([56.317789,38.139279],{},heartIcon));
+
+  const banMap=new ymaps.Map('map-banquet',{center:[56.305654,38.130081],zoom:16,controls:['zoomControl']});
+  banMap.geoObjects.add(new ymaps.Placemark([56.305654,38.130081],{},heartIcon));
+});
+
+/* плавное появление секций при прокрутке */
+const observer=new IntersectionObserver(
+  entries=>entries.forEach(el=>{
+    if(el.isIntersecting){el.target.classList.add('appear');}
+  }),
+  {threshold:.25}
+);
+document.querySelectorAll('main, section, footer').forEach(el=>observer.observe(el));
+
+/* для красивого "Спасибо" */
+document.querySelector('.rsvp-form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      alert('Ошибка при отправке. Попробуйте позже.');
+    }
+  })
+  .catch(() => alert('Ошибка при отправке. Попробуйте позже.'));
+});
+
+</script>
+</body>
+</html>
