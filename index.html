@@ -222,9 +222,9 @@ main{margin-top:120px;display:flex;justify-content:center;position:relative}
   display:inline-block;
   margin:40px auto 0;
   padding:12px 40px;
-  font:400 24px "GoodVibesPro","Great Vibes",cursive;
+  font:400 32px "GoodVibesPro","Great Vibes",cursive;
   color:#fff;background:#000;
-  border:none;border-radius:28px;
+  border:none;border-radius:999px;
   cursor:pointer;transition:opacity .2s;
 }
 .rsvp-submit:hover{opacity:.8}
@@ -635,7 +635,10 @@ a[href^="tel:"]:hover{opacity:.7}
         </label>
         <textarea id="comment" name="Комментарий" rows="3" class="rsvp-input"></textarea>
       </div>
-      <button type="submit" class="rsvp-submit">Отправить анкету</button>
+      <div style="text-align:center">
+        <button type="submit" class="rsvp-submit">Отправить анкету</button>
+      </div>
+
     </form>
     <div id="form-success" style="display:none; text-align:center; margin-top:24px; font-size:20px; color:#226622">
       Спасибо! Ваш ответ получен.
@@ -648,16 +651,16 @@ a[href^="tel:"]:hover{opacity:.7}
 <section class="rsvp">
   <div class="inner">
 
-    <!----- заголовок ---
+    --- заголовок ---
     <h2 class="rsvp-title">Анкета&nbsp;гостя</h2>
 
-    <!----- вводный текст ---
+    --- вводный текст ---
     <p class="rsvp-text">
       Чтобы мы могли сделать праздник ещё лучше, ответьте, пожалуйста,
       на несколько вопросов по кнопке ниже <strong>до&nbsp;01.08.2025</strong>.
     </p>
 
-    <!----- кнопка-ссылка на Google-форму ---
+    --- кнопка-ссылка на Google-форму ---
     <a  href="https://docs.google.com/forms/d/e/1FAIpQLSeEKAewEAGh9NMf3y-HdXNgK2Jebcgy0_sI-wZFBvi10QkU8Q/viewform"
         target="_blank"
         rel="noopener"
