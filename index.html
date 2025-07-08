@@ -63,6 +63,11 @@ main{margin-top:120px;display:flex;justify-content:center;position:relative}
 /* ─── Блок 3 — дата + таймер ─── */
 .when{position:relative;padding:40px 0 10px;text-align:center}
 .when-title,.month-title{font-family:"GoodVibesPro","Great Vibes",cursive;font-weight:400}
+.date-wine {
+  color: #800026;   /* Бордовый, глубокий — можно заменить на другой оттенок, например, #a11e3a */
+  font-weight: 700;
+  letter-spacing: 2px;
+}
 .when-title{font-size:54px;margin-bottom:32px}
 .month-title{font-size:44px;margin-bottom:16px}
 .calendar-img{width:260px;max-width:80%;margin:0 auto 40px;display:block}
@@ -436,7 +441,10 @@ a[href^="tel:"]:hover{opacity:.7}
 <!-- ─── Блок 3 ─── -->
 <section class="when">
   <div class="inner">
-    <h2 class="when-title">Дата&nbsp;проведения<br><strong>06/09/25</strong></h2>
+    <h2 class="when-title">
+      Дата&nbsp;проведения<br>
+      <strong class="date-wine">06/09/25</strong>
+    </strong></h2>
 
     <div class="month-title">Сентябрь</div>
     <img src="img/calendar.png" alt="Календарь Сентябрь 2025" class="calendar-img">
@@ -547,7 +555,7 @@ a[href^="tel:"]:hover{opacity:.7}
     <img src="img/heart2.webp" alt="" class="wish-heart">
     <p class="wish-text">
       Просим Вас не дарить нам цветы – будем признательны за альтернативу букетам
-      в форме чая или кофе.
+      в форме <strong>чая или кофе.</strong>
     </p>
 
     <!-- 3-е пожелание + палитра -->
